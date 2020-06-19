@@ -1,0 +1,25 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+flask = "*"
+dash = "*"
+plotly = "*"
+dash-html-components = "*"
+dash-core-components = "*"
+dash-table = "*"
+dash-auth = "*"
+gunicorn = "*"
+pandas = "*"
+numpy = "*"
+requests = "*"
+beautifulsoup4 = "*"
+PriceIndices = "*"
+lxml = "*"
+
+[requires]
+python_version = "3.7"
