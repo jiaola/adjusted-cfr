@@ -32,22 +32,17 @@ def adjusted_cfr():
 
     cases = pd.DataFrame.from_dict(c, orient='index', columns=['Hispanic', 'White', 'Asian', 'Black', 'Total'])
     deaths = pd.DataFrame.from_dict(f, orient='index', columns=['Hispanic', 'White', 'Asian', 'Black', 'Total'])
-    print(cases)
-    print(deaths)
 
     cfr = deaths / cases
-    print(cfr)
     adjusted_deaths = cfr.multiply(cases['Total'], axis='index')
     adjusted_deaths = adjusted_deaths.drop(['Total'])
     adjusted_deaths.loc['Total'] = adjusted_deaths.sum()
-    print(adjusted_deaths)
 
     ajusted_cfr = adjusted_deaths.divide(cases['Total'], axis='index')
-    print(ajusted_cfr)
 
     df = pd.melt(pd.DataFrame([cfr.loc['Total', 'Hispanic':'Black']]))
     df = df.rename(columns={'variable': 'Race', 'value': 'CFR'})
-    df['Group'] = 'Reported'
+    df['Group'] = 'Crude'
 
     adf = pd.melt(pd.DataFrame([ajusted_cfr.loc['Total', 'Hispanic':'Black']]))
     adf = adf.rename(columns={'variable': 'Race', 'value': 'CFR'})
@@ -61,4 +56,3 @@ def adjusted_cfr():
 
 
 # Calculate the total
-
