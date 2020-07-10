@@ -25,8 +25,8 @@ def adjusted_cfr():
             if j not in [1, 2, 3, 4, 9]:
                 continue
             cols = row.find_all('td')
-            cr.append(int(cols[1].text.strip('\u200b').replace(',', '')))
-            fr.append(int(cols[3].text.strip('\u200b').replace(',', '')))
+            cr.append(int(cols[1].text.strip('\u200b').replace(',', '').replace(' ', '')))
+            fr.append(int(cols[3].text.strip('\u200b').replace(',', '').replace(' ', '')))
         c[header] = cr
         f[header] = fr
 
